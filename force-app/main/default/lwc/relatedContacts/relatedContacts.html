@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Related Contacts" icon-name="standard:contact">
+        <div class="slds-p-around_medium">
+            <template if:true={contactData} for:each={contactData} for:item="record">
+                <c-contact contact={record} key={record.Name}></c-contact>
+            </template>
+        </div>
+        <lightning-button label="Create New Contact" onclick={createNewContact} slot="actions"></lightning-button>
+    </lightning-card>
+    <template if:true={isModalOpen}>
+        <c-new-contact account-id={recordId} onclosemodal={closeModal}></c-new-contact>
+    </template>
+</template>
